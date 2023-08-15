@@ -1,10 +1,22 @@
 from tkinter import *
 
 def add_item(item: Entry, listbox: Listbox):
-    pass
+    entry = new_entry.get()
+    with open("tasks.txt", 'w') as new_task:
+        new_task.writelines(entry)
+        new_task.close()
+
+
 
 def delete_item(listbox: Listbox):
-    pass
+    with open("tasks.txt", "r") as delete_line:
+        delete = delete_line.readlines()
+
+        if delete:
+            delete.pop()
+    
+    with open("tasks.txt", "w") as file:
+        file.writelines(delete)
 
 root = Tk()
 root.title("ToDo-Liste")
